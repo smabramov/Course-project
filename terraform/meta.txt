@@ -1,0 +1,8 @@
+#cloud-config
+ users:
+  - name: serg
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCb9XPlfpIkyA4eeiNYrlJ8HbWllaKDKpxRpEJJptmB6y7m9KQsmm/x7RBeW/ZKMkEYylANOVUQGOwP5Cq7VEjCjqDyQqTyY7A57qHsSKFCifiJnTvPWe2U7zxZJwS7xtLxQNx1nyUVAG+Bo/U6eTDBOhiSyjtFmTmpcNVjGejyQSp0XeFXGkhhys4RalbQdPfSlFnQYy+8Cem8h2yGPvhqcWsOA7tcNLZM5ND36qSlcpTgfUUoizJ87FCmyNPHQAtsDm4+epm4C/3WXLAiwqlsIeOZlQQ6VnRTalEApr/CHvzj7J5DmY7CAYspkccZBZefZu/hLgRUstQNXEs8iAYvzCmFMVDGsh1h/fwIJkXcW2LjjSLxVjNCtfosB8vPE0xGP0q3jZaUDNRGn4mLt5VryLE+vhSOA2zD9O+M6jPbyX1u3rDVBBZ140Fhqq7eNvz29tBip/KkjJ7kNYY21yA6yvuSsNalIRRjQtVS4xHmyh88eetlu9Zqg74hB6RUmbk= serg@osboxes
