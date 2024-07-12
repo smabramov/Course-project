@@ -120,4 +120,4 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Для развертывания использую terraform apply
 
-![Название скриншота 1](ссылка на скриншот 1)
+![terraform apply](https://github.com/smabramov/Course-project/blob/9ec0972f43fc329deed56c2c0db00ea34286c257/jpg/diplom1.jpg)
