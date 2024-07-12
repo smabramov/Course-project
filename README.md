@@ -208,12 +208,13 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Правило Bastion host
 
-![]()
-![]()
+![rule](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom25.jpg)
+![subnets](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom26.jpg)
 
 ### Резервное копирование
 
 Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
 
-![rule](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom25.jpg)
-![subnets](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom26.jpg)
+
+![]()
+![]()
