@@ -121,3 +121,99 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Для развертывания использую terraform apply
 
 ![terraform apply](https://github.com/smabramov/Course-project/blob/9ec0972f43fc329deed56c2c0db00ea34286c257/jpg/diplom1.jpg)
+
+Проверяю параметрвы созданных ВМ
+
+![vm](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom2.jpg)
+
+Устанавливаю Ansible на bastion host
+
+![ansible](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom3.jpg)
+
+Содержимое файлы inventory.ini (использовались fqdn имена)
+
+![ini](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom4.jpg)
+
+Проверяем доступность хостов с помощью Ansible ping
+
+![ping](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom5.jpg)
+
+### Сайт
+
+Устанавливаем Nginx
+
+![nginx](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom6.jpg)
+
+Создайте Target Group, включите в неё две созданных ВМ.
+
+![terget_group](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom7.jpg)
+
+Создайте Backend Group, настройте backends на target group, ранее созданную. Настройте healthcheck на корень (/) и порт 80, протокол HTTP.
+
+![Backend Group](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom8.jpg)
+
+Создайте HTTP router. Путь укажите — /, backend group — созданную ранее.
+
+![router](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom9.jpg)
+
+Создайте Application load balancer для распределения трафика на веб-сервера, созданные ранее. Укажите HTTP router, созданный ранее, задайте listener тип auto, порт 80.
+
+![balanser](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom10.jpg)
+
+Протестируйте сайт curl -v <публичный IP балансера>:80
+
+![curl](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom11.jpg)
+![sait](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom12.jpg)
+
+### Мониторинг
+
+Zabbix доступен по http://84.201.177.77/zabbix/
+
+Создайте ВМ, разверните на ней Zabbix. На каждую ВМ установите Zabbix Agent, настройте агенты на отправление метрик в Zabbix.
+
+![install](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom13.jpg)
+![install](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom14.jpg)
+![zabbix](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom15.jpg)
+
+Настройте дешборды с отображением метрик, минимальный набор — по принципу USE (Utilization, Saturation, Errors) для CPU, RAM, диски, сеть, http запросов к веб-серверам. Добавьте необходимые tresholds на соответствующие графики.
+
+![1](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom16.jpg)
+![2](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom17.jpg)
+![3](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom18.jpg)
+
+### Логи
+
+Kibana доступен по http://158.160.5.95:5601/
+
+Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch
+
+![install](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom19.jpg)
+![install](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom20.jpg)
+
+Создайте ВМ, разверните на ней Kibana, сконфигурируйте соединение с Elasticsearch.
+
+![1](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom22.jpg)
+![2](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom23.jpg)
+![]()
+
+### Сеть
+
+Разверните один VPC. Сервера web, Elasticsearch поместите в приватные подсети. Сервера Zabbix, Kibana, application load balancer определите в публичную подсеть.
+
+Настройте Security Groups соответствующих сервисов на входящий трафик только к нужным портам.
+
+![security](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom24.jpg)
+
+Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh. Эта вм будет реализовывать концепцию bastion host . Синоним "bastion host" - "Jump host". Подключение ansible к серверам web и Elasticsearch через данный bastion host можно сделать с помощью ProxyCommand . Допускается установка и запуск ansible непосредственно на bastion host.(Этот вариант легче в настройке)
+
+Правило Bastion host
+
+![]()
+![]()
+
+### Резервное копирование
+
+Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
+
+![rule](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom25.jpg)
+![subnets](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom26.jpg)
