@@ -142,6 +142,8 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Устанавливаем Nginx
 
+http://158.160.140.104:80
+
 ![nginx](https://github.com/smabramov/Course-project/blob/4a8ed38bbac4bd3a584be048844e5ba4ec068a53/jpg/diplom6.jpg)
 
 Создайте Target Group, включите в неё две созданных ВМ.
@@ -167,7 +169,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Мониторинг
 
-Zabbix доступен по http://158.160.12.87/zabbix/
+Zabbix доступен по http://51.250.110.30/zabbix/
 
 Создайте ВМ, разверните на ней Zabbix. На каждую ВМ установите Zabbix Agent, настройте агенты на отправление метрик в Zabbix.
 
@@ -183,7 +185,7 @@ Zabbix доступен по http://158.160.12.87/zabbix/
 
 ### Логи
 
-Kibana доступен по http://158.160.5.95:5601/
+Kibana доступен по http://51.250.98.156:5601/
 
 Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch
 
