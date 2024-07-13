@@ -19,7 +19,7 @@
     
     - name: Создание HTML-странички
       copy:
-        content: "<html><head><title>Netology diplom SavinAI</title></head><body><h1>Netology diplom SavinAI</h1></body></html>"
+        content: "<html><head><title>Netology Course project AbramovSM</title></head><body><h1>Netology Course project AbramovSM</h1></body></html>"
         dest: /var/www/html/index.html
         owner: www-data
         group: www-data
