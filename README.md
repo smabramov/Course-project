@@ -219,4 +219,4 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 
 ![1](https://github.com/smabramov/Course-project/blob/9b2547a236e450f9824d9f26ab158cd330f4a29b/jpg/diplom28.jpg)
-![2]()
+![2](https://github.com/smabramov/Course-project/blob/6a612018d950ddccb52affb350ccd9bc26446f2a/jpg/diplom28.jpg)
